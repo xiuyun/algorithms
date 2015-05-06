@@ -5,20 +5,19 @@
  * Date: 2015/5/5
  * Time: 13:53
  */
-$array = array(5,2,4,6,1,3);
+$a = array(3,2,1,6,1,3);
 
-function sertSort($arr){
-
-    for($i=1;$i<count($arr);$i++){
-        $tmp=$arr[$i];
-        $key = $i-1;
-        while( $key>=0 && $tmp<$arr[$key]){
-            $arr[$key+1] = $arr[$key];
-            $key--;
+function insert($arr){
+    $b[] = $arr[0];
+    for( $i = 1 ; $i < count($arr); $i++ ){
+        $tmp = $arr[$i];
+        $j = $i;
+        while( $j > 0 &&  $b[$j-1] > $tmp ){
+            $b[$j] = $b[$j - 1];
+            $j--;
         }
-        if(($key+1)!=$i)
-            $arr[$key+1] = $tmp;
+        $b[$j]  = $tmp;
     }
-    return $arr;
+    return $b;
 }
-var_dump(sertSort($array));
+var_dump(insert($a));
